@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<title>Recipe Reservoir</title>
+        
+        <div id="header">
+        <h1>Recipe Reservoir</h1>
+        </div>
+        
+        <style>
+			head {
+				background-color: #006;
+			}
+			
+			a {
+				text-align: center;
+			}
+			table {
+				border = "1"
+			}
+			h1 {
+				color: #fff;
+				text-align: center;
+				background-color: #003;
+				
+				
+			}
+			.center {
+				margin-left: auto;
+				margin-right: auto;
+			}
+		</style>
+        
+    </head>
+    
+    <body background = "textureblue.png" style="text-align:center;">
+    
+    	<img src="RRlogo.png" alt="Recipe Reservoir Logo" width="250" height="250">
+    
+    	<p>
+        <em><b>Welcome to Recipe Reservoir!</b> A website where you can view all the recipes that are readily available to you based on your ingredients at home.</em> 
+        
+        <marquee behavior="alternate" direction=right" scrollamount="8" bgcolor="white">Over 100+ Recipes available!</marquee>
+        
+        <hr>
+        
+        With the help of our Recipe Finder Tool, we deliver all the recipes to you based on the inputted ingredients with a quick search.
+        </p>
+    
+		<h3>Try our Recipe Shopping List!</h3>
+        
+        <input type="button" onclick="viewMoney()" value="View money:"> <br>
+        <p id="money"></p>
+        <input type="button" onclick="viewCart()" value="View cart:">
+ 
+        <p id="cart"></p>
+        
+        <script>
+		var userMoney = 100
+		
+		cheeseCost = 2.5; lettuceCost =0.75; hamCost = 5; breadCost = 1.25;
+        cheeseCount=0; lettuceCount =0; hamCount =0; breadCount =0;
+		
+		function viewMoney() {
+			document.getElementById("money").innerHTML = "£" + userMoney;
+		}
+		
+		function viewCart() {
+        	if (cheeseCount > 0) {
+				document.getElementById("cart").innerHTML +=	"Cheese x" + cheeseCount ;
+            	} 
+                
+            if (lettuceCount > 0) {
+                document.getElementById("cart").innerHTML +=	"Lettuce x" + lettuceCount;
+                }
+                
+            if (hamCount > 0) {
+                document.getElementById("cart").innerHTML +=	"Ham x" + hamCount; 
+             	}
+                
+            if (breadCount > 0) {
+                document.getElementById("cart").innerHTML =	"Bread x" + breadCount;
+            	} 
+                
+            if (cheeseCount, breadCount, hamCount, lettuceCount == 0){
+                document.getElementById("cart").innerHTML =	"Cart empty";
+            	}    
+		}
+		
+		function cheeseBuy() {
+			userMoney -= cheeseCost;
+            cheeseCount += 1
+			return userMoney, cheeseCount
+		}
+		
+		function lettuceBuy() {
+			userMoney -= lettuceCost;
+            lettuceCount += 1
+			return userMoney, lettuceCount
+		}
+		
+		function hamBuy() {
+			userMoney -= hamCost;
+            hamCount += 1
+			return userMoney, hamCount
+		}
+		
+		function breadBuy() {
+			userMoney -= breadCost;
+            breadCount += 1
+			return userMoney, breadCount
+		}
+		
+		
+        </script>
+        
+  		<div id="table">
+  
+          <table border="1" bordercolor="black" class="center" 
+          cellpadding= "10px" bgcolor="#FFFFFF"">		
+              <tr>
+                  <th bgcolor = "royalblue">Item</th>
+                  <th bgcolor = "royalblue">Cost</th>
+                  <th bgcolor ="royalblue">Purchase</th>
+              </tr>
+              
+              <tr>
+                  <td>Cheese</td>
+                  <td>$2.50</td>
+                  <td id = "buycheese">
+                  <input type="button" onclick="cheeseBuy()" value="Buy"">   
+              </tr>
+              
+              
+              
+              <tr>
+                  <td>Lettuce</td>
+                  <td>$0.75</td>
+                       <td id = "buylettuce">
+                  <input type="button" onclick="lettuceBuy()" value="Buy">   
+              </tr>
+              
+              <tr>
+                  <td>Ham</td>
+                  <td>$5.00</td>
+                  <td id = "buyham">
+                  <input type="button" onclick="hamBuy()" value="Buy">   
+              </tr>
+              
+              <tr>
+                  <td>Bread</td>
+                  <td>$1.25</td>
+                  <td id = "buybread">
+                  <input type="button" onclick="breadBuy()" value="Buy">   
+              
+              </tr>
+          </table>
+  
+        </div>
+        
+ 
+        
+    </body>
+</html>
