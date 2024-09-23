@@ -5,14 +5,18 @@ API_KEY = "8d164d079e494106b1586dd079f13bde"
 # Base URL for the complex search endpoint
 BASE_URL = "https://api.spoonacular.com/recipes/complexSearch"
 
-def search_recipes(query):
+def search_recipes(**kwargs): 		#Takes multiple keyword arguments for parameters: query, number, API_KEY, cuisine, diet, sort
     # Define query parameters
-    params = {
-        "query": query,       # Search term
-        "number": 5,          # Number of results to return
-        "apiKey": API_KEY     # Your Spoonacular API key
-    }
-    
+    for parameter in kwargs:
+	    params = {
+		"query": query,       # Search term
+		"number": number,          # Number of results to return
+		"apiKey": API_KEY,     # Spoonacular API key
+		"cuisine": cuisine,	# string -- italian
+	    	"diet": diet,		# string -- vegetarian
+		"sort": sort 		# string --calories
+	    }
+
     # Make the GET request to the Spoonacular API
     response = requests.get(BASE_URL, params=params)
     
@@ -28,7 +32,7 @@ def search_recipes(query):
 # Example test to search for recipes with the word "pasta"
 if __name__ == "__main__":
     search_term = "pasta"
-    results = search_recipes(search_term)
+    results = search_recipes(query= search_term, number= 50, API_KEY= API_KEY, cuisine= "italian", diet= "vegetarian", sort= "calories")
     
     if results:
         print(f"Found {len(results['results'])} recipes for '{search_term}':")
